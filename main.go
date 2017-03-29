@@ -19,10 +19,11 @@ func main() {
 		"aaabbbeeefffgggaasdfa",
 	}
 
-	for _, s := range samples {
-		out := Encrypt([]byte(s), key, iv)
+	for _, txt := range samples {
+		cipher := Encrypt([]byte(txt), key, iv)
+		txt2 := Decrypt(cipher, key, iv)
 
-		log.Printf("%-30v %X\n", s, out)
+		log.Printf("txt=%v, txt2=%s, cipher=%X\n", txt, txt2, cipher)
 	}
 
 }
